@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_dark">
+
+    <TextView
+        android:id="@+id/ui_tx_title_formation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:padding="15dp"
+        android:text="svsdfdfd"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/ui_tx_sub_title_formation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ui_tx_title_formation"
+        android:layout_marginLeft="10dp"
+        android:gravity="left"
+        android:padding="15dp"
+        android:text="svsdfdfd"
+        android:textColor="@color/yellow"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/ui_tx_sub_content_formation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ui_tx_sub_title_formation"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="left"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:text="svsdffouzefouezhfouezfuezhfouzehfuezhfouezhfzehfoeuzhfouzefhozeuhfouzehfouezhfoezuhfoezuhfdfd"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/ui_ln_menu_formation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:background="@color/grey_dark">
+
+
+
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/ui_tx_sub_btn_cat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/ui_ln_menu_formation"
+        android:layout_margin="20dp"
+        android:background="@color/yellow"
+        android:gravity="center"
+        android:padding="10dp"
+
+        android:text="SUIVRE LA FORMATION"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
