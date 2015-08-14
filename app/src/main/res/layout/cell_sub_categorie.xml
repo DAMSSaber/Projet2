@@ -44,7 +44,7 @@
         android:textColor="@color/white"
         android:textStyle="bold" />
 
-    <Button
+    <TextView
         android:id="@+id/ui_tx_sub_btn_cat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

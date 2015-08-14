@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_dark">
+    android:background="@color/grey_light">
 
     <TextView
         android:id="@+id/ui_tx_title_formation"
@@ -26,33 +26,151 @@
         android:textColor="@color/yellow"
         android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/ui_tx_sub_content_formation"
+    <ImageView
+        android:id="@+id/ui_img_sub_content_formation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ui_tx_sub_title_formation"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="left"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="20dp"
-        android:text="svsdffouzefouezhfouezfuezhfouzehfuezhfouezhfzehfoeuzhfouzefhozeuhfouzehfouezhfoezuhfoezuhfdfd"
-        android:textColor="@color/white" />
+        android:layout_centerHorizontal="true"
+        android:padding="3dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/chrono" />
 
     <LinearLayout
         android:id="@+id/ui_ln_menu_formation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1"
+        android:layout_below="@id/ui_img_sub_content_formation"
+        android:layout_centerVertical="true"
+        android:background="@color/grey_dark"
         android:orientation="horizontal"
-        android:background="@color/grey_dark">
+        android:padding="15dp"
+        android:weightSum="1">
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.25"
+            android:gravity="center">
 
 
+            <ImageView
+                android:id="@+id/ui_img_time_formation"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/chrono" />
 
+            <TextView
+                android:id="@+id/ui_tx_formation_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ui_img_time_formation"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="svsdfdfd"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+
+            android:layout_weight="0.25"
+            android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/ui_img_price_formation"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/prix" />
+
+            <TextView
+                android:id="@+id/ui_tx_formation_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ui_img_price_formation"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+
+                android:text="svsdfdfd"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+
+            android:layout_weight="0.25"
+            android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/ui_img_note_formation"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/note" />
+
+            <TextView
+                android:id="@+id/ui_tx_formation_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ui_img_note_formation"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+
+                android:text="svsdfdfd"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/ui_img_date_formation"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/date" />
+
+            <TextView
+                android:id="@+id/ui_tx_formation_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ui_img_date_formation"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="svsdfdfd"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
     </LinearLayout>
 
 

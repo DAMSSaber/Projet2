@@ -54,5 +54,15 @@ public class ListSubCategorieAdapter extends BaseAdapter {
 		cellClass.reuse(comment);
 		return cellClass;
 	}
+	@Override
+	public boolean areAllItemsEnabled()
+	{
+		return true;
+	}
 
+	@Override
+	public boolean isEnabled(int arg0)
+	{
+		return true;
+	}
 }

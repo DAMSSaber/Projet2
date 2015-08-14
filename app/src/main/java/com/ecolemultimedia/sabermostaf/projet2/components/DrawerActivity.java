@@ -1,5 +1,6 @@
 package com.ecolemultimedia.sabermostaf.projet2.components;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.ecolemultimedia.sabermostaf.projet2.R;
+import com.ecolemultimedia.sabermostaf.projet2.activities.ListFormationActivity;
 import com.ecolemultimedia.sabermostaf.projet2.adapters.DrawerListAdapter;
 import com.ecolemultimedia.sabermostaf.projet2.models.Categories;
 
@@ -64,6 +66,20 @@ public class DrawerActivity extends FragmentActivity {
 
 		adapter= new DrawerListAdapter(this,mListCategorie);
 		ui_drawerList.setAdapter(adapter);
+
+
+		ui_drawerList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+				Intent intent=new Intent(DrawerActivity.this, ListFormationActivity.class);
+				intent.putExtra("poschild", childPosition);
+				intent.putExtra("posGroup", groupPosition);
+				startActivity(intent);
+
+				return false;
+			}
+		});
 
 
 		ui_drawerList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {

@@ -22,10 +22,7 @@ import com.ecolemultimedia.sabermostaf.projet2.views.ViewHome;
 
 import java.util.ArrayList;
 
-public class SubCategorieActivity extends DrawerActivity {
-
-
-
+public class SubCategorieActivity extends DrawerActivity implements AdapterView.OnItemClickListener {
 
 
     private ListView ui_lis_sub_cat = null;
@@ -44,8 +41,6 @@ public class SubCategorieActivity extends DrawerActivity {
         initDrawer();
 
 
-
-
         mListCategorie.addAll(ListOfCategorie.getInstance().getListCategorie());
         adapter.notifyDataSetChanged();
 
@@ -54,35 +49,12 @@ public class SubCategorieActivity extends DrawerActivity {
         adapterss = new ListSubCategorieAdapter(this, ListOfSubCategorie.getInstance().getListSubCategorie());
         ui_lis_sub_cat.setAdapter(adapterss);
 
-        ui_lis_sub_cat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+        Log.v("Debeug", "Houmani");
 
-                Log.v("Debeug", "Click");
-                Intent intent = new Intent(SubCategorieActivity.this, ListFormationActivity.class);
-                intent.putExtra("pos", position);
-                startActivity(intent);
-
-            }
-
-        });
-
-
-
-
-
+        ui_lis_sub_cat.setOnItemClickListener(this);
 
     }
-
-
-
-
-
-
-
-
     public void setupActrionBar() {
         ActionBar bar = getActionBar();
         // bar.setCustomView(R.layout.actionbar_custom_view_home);
@@ -98,4 +70,11 @@ public class SubCategorieActivity extends DrawerActivity {
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.v("Debeug", "Click");
+        Intent intent = new Intent(SubCategorieActivity.this, ListFormationActivity.class);
+        intent.putExtra("pos", position);
+        startActivity(intent);
+    }
 }
