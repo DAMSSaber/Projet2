@@ -21,7 +21,7 @@ public class ListFormationActivity extends DrawerActivity implements RequestCall
 
     private ListView ui_lis_formation = null;
     private ArrayList<Formation> listFormation = null;
-    private ListFormationAdapter adapterss = null;
+    private ListFormationAdapter adaptersss = null;
     int pos = 0;
 
     @Override
@@ -31,29 +31,27 @@ public class ListFormationActivity extends DrawerActivity implements RequestCall
         Bundle bundle = getIntent().getExtras();
         pos = bundle.getInt("pos");
         setupActrionBar();
-        setContentView(R.layout.activity_sub_categorie);
+        setContentView(R.layout.activity_formation);
         initDrawer();
 
 
         mListCategorie.addAll(ListOfCategorie.getInstance().getListCategorie());
         adapter.notifyDataSetChanged();
 
-        Bundle budle = getIntent().getExtras();
-        int position = budle.getInt("pos");
-
+        listFormation= new ArrayList<Formation>();
 
         ui_lis_formation = (ListView) findViewById(R.id.ui_lis_formation);
 
-        ServiceGetFormations.getInstance().getFormation(this, ListOfSubCategorie.getInstance().getListSubCategorie().get(position).getmId());
-        adapterss = new ListFormationAdapter(this, listFormation);
-        ui_lis_formation.setAdapter(adapterss);
+        ServiceGetFormations.getInstance().getFormation(this, ListOfSubCategorie.getInstance().getListSubCategorie().get(pos).getmId());
+        adaptersss = new ListFormationAdapter(this, listFormation);
+        ui_lis_formation.setAdapter(adaptersss);
 
     }
 
     public void setupActrionBar() {
         ActionBar bar = getActionBar();
         // bar.setCustomView(R.layout.actionbar_custom_view_home);
-        bar.setTitle(ListOfCategorie.getInstance().getListCategorie().get(pos).getmTitle());
+        bar.setTitle(ListOfSubCategorie.getInstance().getListSubCategorie().get(pos).getmTitle());
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setDisplayShowTitleEnabled(false);
         bar.setDisplayShowTitleEnabled(true);
@@ -71,7 +69,7 @@ public class ListFormationActivity extends DrawerActivity implements RequestCall
         this.listFormation.clear();
         this.listFormation.addAll(listCat);
 
-        adapterss.notifyDataSetChanged();
+        adaptersss.notifyDataSetChanged();
 
     }
 
