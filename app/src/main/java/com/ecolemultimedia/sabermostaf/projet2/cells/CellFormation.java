@@ -1,10 +1,13 @@
 package com.ecolemultimedia.sabermostaf.projet2.cells;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.ecolemultimedia.sabermostaf.projet2.R;
+import com.ecolemultimedia.sabermostaf.projet2.activities.LeconActivity;
 import com.ecolemultimedia.sabermostaf.projet2.components.AppController;
 import com.ecolemultimedia.sabermostaf.projet2.models.Formation;
 
@@ -29,6 +33,8 @@ public class CellFormation extends RelativeLayout {
     private TextView   ui_tx_formation_price=null;
 
     private TextView ui_tx_formation_date=null;
+private  RelativeLayout ui_rl_sub_content_formation=null;
+    private Button ui_tx_sub_btn_cat=null;
     private LayoutInflater layoutInflater = null;
 
     private TextView  ui_tx_formation_note=null;
@@ -60,8 +66,8 @@ public class CellFormation extends RelativeLayout {
         ui_tx_sub_title_formation= (TextView) convertView
                 .findViewById(R.id.ui_tx_sub_title_formation);
         ui_img_sub_content_formation=(ImageView)convertView.findViewById(R.id.ui_img_sub_content_formation);
-
-
+        ui_tx_sub_btn_cat=(Button)convertView.findViewById(R.id.ui_tx_sub_btn_cat);
+        ui_rl_sub_content_formation=(RelativeLayout)convertView.findViewById(R.id.ui_rl_sub_content_formation);
         Typeface style = Typeface.createFromAsset(m_context.getAssets(),
                 "corbel.otf");
         ui_tx_sub_title_formation.setTypeface(style);
@@ -71,7 +77,7 @@ public class CellFormation extends RelativeLayout {
 
     }
 
-    public void reuse(Formation info) {
+    public void reuse(final Formation info,final int position) {
 
         cleanView();
 
@@ -93,7 +99,6 @@ public class CellFormation extends RelativeLayout {
                 public void onErrorResponse(VolleyError error) {
                     Log.e("debeug",
                             "Image Load Error: " + error.getMessage());
-
                 }
 
                 @Override
@@ -113,7 +118,17 @@ public class CellFormation extends RelativeLayout {
             ui_tx_formation_time.setText(getDurationString(value));
         }
 
+        ui_rl_sub_content_formation.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                Uri data = Uri.parse(info.getTeaser());
+                intent.setDataAndType(data, "video/mp4");
+                m_context.startActivity(intent);
+
+            }
+        });
         if(info.getPrice()!=null){
 
 
@@ -155,6 +170,15 @@ public class CellFormation extends RelativeLayout {
 
 
         }
+
+        ui_tx_sub_btn_cat.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(m_context, LeconActivity.class);
+                intent.putExtra("position", position);
+                m_context.startActivity(intent);
+            }
+        });
 
 
     }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_dark"
+    android:gravity="center_vertical"
+    android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/ui_tx_sub_title_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+       android:layout_centerHorizontal="true"
+        android:text="svsdfdfd"
+        android:gravity="center"
+        android:padding="15dp"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <RelativeLayout
+        android:id="@+id/ui_rl_sub_content_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ui_tx_sub_title_video"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.25"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ui_img_sub_content_videon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/chrono" />
+
+        <ImageView
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/play" />
+
+    </RelativeLayout>
+</RelativeLayout>

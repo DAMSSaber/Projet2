@@ -53,7 +53,7 @@ public class ListFormationAdapter extends BaseAdapter {
 		} else
 			cellClass = (CellFormation) convertView;
 
-		cellClass.reuse(comment);
+		cellClass.reuse(comment,position);
 		return cellClass;
 	}
 

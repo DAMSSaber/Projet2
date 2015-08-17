@@ -1,8 +1,11 @@
 package com.ecolemultimedia.sabermostaf.projet2.activities;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ecolemultimedia.sabermostaf.projet2.R;
@@ -12,6 +15,7 @@ import com.ecolemultimedia.sabermostaf.projet2.interfaces.RequestCallbackFormati
 import com.ecolemultimedia.sabermostaf.projet2.models.Formation;
 import com.ecolemultimedia.sabermostaf.projet2.services.ServiceGetFormations;
 import com.ecolemultimedia.sabermostaf.projet2.utils.ListOfCategorie;
+import com.ecolemultimedia.sabermostaf.projet2.utils.ListOfFormation;
 import com.ecolemultimedia.sabermostaf.projet2.utils.ListOfSubCategorie;
 
 import java.util.ArrayList;
@@ -46,12 +50,24 @@ public class ListFormationActivity extends DrawerActivity implements RequestCall
         adaptersss = new ListFormationAdapter(this, listFormation);
         ui_lis_formation.setAdapter(adaptersss);
 
+        ui_lis_formation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+
+
+            }
+        });
+
+
+
     }
 
     public void setupActrionBar() {
         ActionBar bar = getActionBar();
         // bar.setCustomView(R.layout.actionbar_custom_view_home);
-        bar.setTitle(ListOfSubCategorie.getInstance().getListSubCategorie().get(pos).getmTitle());
+        //bar.setTitle(ListOfSubCategorie.getInstance().getListSubCategorie().get(pos).getmTitle());
         bar.setDisplayHomeAsUpEnabled(true);
         bar.setDisplayShowTitleEnabled(false);
         bar.setDisplayShowTitleEnabled(true);
@@ -68,7 +84,7 @@ public class ListFormationActivity extends DrawerActivity implements RequestCall
 
         this.listFormation.clear();
         this.listFormation.addAll(listCat);
-
+        ListOfFormation.getInstance().setListFormation(listCat);
         adaptersss.notifyDataSetChanged();
 
     }

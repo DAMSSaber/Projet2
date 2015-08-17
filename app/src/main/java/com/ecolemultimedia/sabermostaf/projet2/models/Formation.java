@@ -1,7 +1,12 @@
 package com.ecolemultimedia.sabermostaf.projet2.models;
 
+import android.util.Log;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by saber on 12/08/15.
@@ -32,6 +37,8 @@ public class Formation {
     private Boolean active = false;
     private String rating = null;
 
+    private ArrayList<Item> ListItem = null;
+
 
     public void initFormation(JSONObject formation) {
 
@@ -46,7 +53,6 @@ public class Formation {
             if (formation.has("subtitle")) {
 
                 setSubtitle(formation.getString("subtitle"));
-
             }
             if (formation.has("price")) {
                 setPrice(formation.getString("price"));
@@ -60,6 +66,9 @@ public class Formation {
             if (formation.has("objectives")) {
 
                 setObjectives(formation.getString("objectives"));
+            }
+            if (formation.has("ean13")) {
+                setEan13(formation.getString("ean13"));
 
             }
             if (formation.has("prerequisites")) {
@@ -93,21 +102,28 @@ public class Formation {
             if (formation.has("images")) {
                 setImage(formation.getJSONObject("images").getJSONObject("landscapes").getString("medium"));
             }
-
             if (formation.has("free")) {
                 setFree(formation.getString("free"));
-
             }
             if (formation.has("rating")) {
                 setRating(formation.getJSONObject("rating").getString("average"));
-
             }
-
             if (formation.has("video_count")) {
                 setVideo_count(formation.getString("video_count "));
             }
             if (formation.has("active")) {
                 setActive(formation.getBoolean("active"));
+            }
+            ListItem = new ArrayList<Item>();
+            if (formation.has("items")) {
+                Log.v("Debeug", "Have Item");
+                JSONArray subCat = formation.getJSONArray("items");
+                for (int i = 0; i < subCat.length(); i++) {
+                    Item cat = new Item();
+                    cat.initItem(subCat.getJSONObject(i));
+                    ListItem.add(cat);
+                }
+
             }
 
         } catch (JSONException e) {
@@ -291,6 +307,14 @@ public class Formation {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public ArrayList<Item> getListItem() {
+        return ListItem;
+    }
+
+    public void setListItem(ArrayList<Item> listItem) {
+        ListItem = listItem;
     }
 
 }
