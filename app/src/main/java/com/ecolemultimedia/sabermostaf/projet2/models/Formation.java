@@ -109,21 +109,22 @@ public class Formation {
                 setRating(formation.getJSONObject("rating").getString("average"));
             }
             if (formation.has("video_count")) {
-                setVideo_count(formation.getString("video_count "));
+                setVideo_count(formation.getString("video_count"));
             }
             if (formation.has("active")) {
                 setActive(formation.getBoolean("active"));
             }
             ListItem = new ArrayList<Item>();
             if (formation.has("items")) {
-                Log.v("Debeug", "Have Item");
+
                 JSONArray subCat = formation.getJSONArray("items");
                 for (int i = 0; i < subCat.length(); i++) {
                     Item cat = new Item();
                     cat.initItem(subCat.getJSONObject(i));
                     ListItem.add(cat);
-                }
 
+                }
+                this.setListItem(ListItem);
             }
 
         } catch (JSONException e) {

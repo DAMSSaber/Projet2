@@ -30,9 +30,9 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:padding="15dp"
-
+                android:textStyle="bold"
                 android:textColor="@color/yellow"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
 
 
             <TextView
@@ -58,7 +58,7 @@
                 android:textColor="@color/yellow"
                 android:textSize="18dp" />
 
-            <TextView
+            <RelativeLayout
                 android:id="@+id/ui_tx_sub_content_lecon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,45 +66,19 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:padding="15dp"
-
                 android:textColor="@color/white"
                 android:textSize="18dp"
 
                 />
 
             <TextView
-                android:id="@+id/ui_tx_prerequi_lecon"
+                android:id="@+id/ui_tx_nb_lecon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ui_tx_sub_content_lecon"
                 android:layout_marginLeft="10dp"
-                android:padding="15dp"
-                android:text="Prerequis :"
-                android:textColor="@color/yellow"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/ui_tx_prerequi_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ui_tx_prerequi_lecon"
-                android:layout_marginLeft="10dp"
                 android:paddingLeft="15dp"
-                android:paddingTop="10dp"
-
-                android:textColor="@color/white"
-                android:textSize="18dp" />
-
-
-            <TextView
-                android:id="@+id/ui_tx_nb_lecon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ui_tx_prerequi_content"
-                android:layout_marginLeft="10dp"
-                android:paddingLeft="15dp"
-                android:paddingTop="10dp"
-                android:text="Nombre de leçons : 25"
+                android:text=" "
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
@@ -246,17 +220,13 @@
             </LinearLayout>
 
 
-            <ExpandableListView
-                android:id="@+id/ui_list_chapitre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/grey_light"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/ui_view_pager_item"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
                 android:layout_below="@id/ui_ln_menu_lecon"
-                android:choiceMode="singleChoice"
-                android:divider="@null"
-                android:groupIndicator="@null"
-                android:listSelector="@android:color/transparent"
-                android:scrollbars="none" />
+                android:layout_marginTop="10dp"
+                android:background="@color/grey_light" />
 
 
         </RelativeLayout>

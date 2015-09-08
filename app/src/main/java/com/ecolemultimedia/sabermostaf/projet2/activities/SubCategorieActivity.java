@@ -4,12 +4,11 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.ecolemultimedia.sabermostaf.projet2.R;
@@ -18,7 +17,6 @@ import com.ecolemultimedia.sabermostaf.projet2.components.DrawerActivity;
 import com.ecolemultimedia.sabermostaf.projet2.models.Categories;
 import com.ecolemultimedia.sabermostaf.projet2.utils.ListOfCategorie;
 import com.ecolemultimedia.sabermostaf.projet2.utils.ListOfSubCategorie;
-import com.ecolemultimedia.sabermostaf.projet2.views.ViewHome;
 
 import java.util.ArrayList;
 
@@ -28,18 +26,29 @@ public class SubCategorieActivity extends DrawerActivity implements AdapterView.
     private ListView ui_lis_sub_cat = null;
     private ArrayList<Categories> listCat = null;
     private ListSubCategorieAdapter adapterss = null;
-    int pos=0;
+    private Button ui_tx_sub_btn_history = null;
+    int pos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle bundle =getIntent().getExtras();
-        pos=bundle.getInt("pos");
+        Bundle bundle = getIntent().getExtras();
+        pos = bundle.getInt("pos");
         setupActrionBar();
         setContentView(R.layout.activity_sub_categorie);
         initDrawer();
+        ui_tx_sub_btn_history = (Button) findViewById(R.id.ui_tx_sub_btn_history);
 
+        ui_tx_sub_btn_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubCategorieActivity.this,
+                        HistoryActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
 
         mListCategorie.addAll(ListOfCategorie.getInstance().getListCategorie());
         adapter.notifyDataSetChanged();
@@ -55,6 +64,7 @@ public class SubCategorieActivity extends DrawerActivity implements AdapterView.
         ui_lis_sub_cat.setOnItemClickListener(this);
 
     }
+
     public void setupActrionBar() {
         ActionBar bar = getActionBar();
         // bar.setCustomView(R.layout.actionbar_custom_view_home);
@@ -71,10 +81,22 @@ public class SubCategorieActivity extends DrawerActivity implements AdapterView.
 
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Log.v("Debeug", "Click");
         Intent intent = new Intent(SubCategorieActivity.this, ListFormationActivity.class);
-        intent.putExtra("pos", position);
+        intent.putExtra("poschild", position);
+        intent.putExtra("posGroup", pos);
         startActivity(intent);
     }
 }

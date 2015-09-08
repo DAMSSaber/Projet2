@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.ecolemultimedia.sabermostaf.projet2.R;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 
 public class CellDrawerChild extends RelativeLayout {
 
@@ -46,8 +49,14 @@ public class CellDrawerChild extends RelativeLayout {
 
         cleanView();
         if (info != null) {
+            String parse=null;
+            try {
+                parse= URLDecoder.decode(info, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
-            ui_tx_title_sub_cat.setText(info);
+            ui_tx_title_sub_cat.setText(parse);
 
 
 

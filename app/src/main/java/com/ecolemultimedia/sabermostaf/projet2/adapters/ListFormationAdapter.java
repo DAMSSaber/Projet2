@@ -20,7 +20,6 @@ public class ListFormationAdapter extends BaseAdapter {
 
 	public ListFormationAdapter(Context context,
 								ArrayList<Formation> listFormation) {
-
 		this.listFormation = listFormation;
 		this.context = context;
 	}

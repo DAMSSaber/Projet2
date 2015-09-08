@@ -37,7 +37,7 @@ public class ServiceGetLecons {
 
 
     public void getLecons(final RequestCallbackLecons delegate, String id) {
-        Log.v("Debeug", "URL "+Const.URL_JSON_LEC +id+ "/tree");
+        Log.v("Debeug", "URL "+Const.URL_JSON_LEC +id);
         JsonObjectRequest req = new JsonObjectRequest(Const.URL_JSON_LEC +id+ "/tree",
                 null, new Response.Listener<JSONObject>() {
             @Override

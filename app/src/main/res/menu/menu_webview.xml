@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_share"
+        android:actionProviderClass="com.ecolemultimedia.sabermostaf.projet2.utils.MyShareAction"
+        android:alpha="0"
+        android:icon="@drawable/navigation_share"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_share"/>
+
+</menu>

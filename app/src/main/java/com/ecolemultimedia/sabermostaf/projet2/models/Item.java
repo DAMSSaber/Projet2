@@ -25,12 +25,13 @@ public class Item {
     private Boolean free = false;
     private ArrayList ListItem = null;
 
-    public void initItem(JSONObject item) {
-        try {
+    public void initItem(JSONObject item) throws JSONException {
+
 
             if (item.has("title")) {
                 setTitle(item.getString("title"));
             }
+
             if (item.has("type")) {
                 setType(item.getString("type"));
             }
@@ -51,7 +52,9 @@ public class Item {
             }
 
             if (item.has("field_video")) {
-                setField_video(item.getJSONArray("field_video").getJSONObject(0).getString("filepath"));
+                if(item.getJSONArray("field_video").length()>0) {
+                    setField_video(item.getJSONArray("field_video").getJSONObject(0).getString("filepath"));
+                }
             }
 
             if (item.has("active")) {
@@ -62,21 +65,6 @@ public class Item {
                 setFree(item.getBoolean("free"));
             }
 
-
-            if (item.has("items")) {
-                ListItem=new ArrayList<Item>();
-                JSONArray subCat = item.getJSONArray("items");
-                for (int i=0; i<subCat.length();i++){
-                    Item cat= new Item();
-                    cat.initItem(subCat.getJSONObject(i));
-                    ListItem.add(cat);
-                }
-
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     public ArrayList getListItem() {

@@ -1,5 +1,4 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ui_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -21,12 +20,24 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/ui_tx_sub_btn_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/yellow"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Historique des leçons"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
         <ListView
             android:id="@+id/ui_lis_sub_cat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:focusable="true" />
     </LinearLayout>
 
     <ExpandableListView

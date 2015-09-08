@@ -2,6 +2,9 @@ package com.ecolemultimedia.sabermostaf.projet2.views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.text.Html;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -15,8 +18,12 @@ import com.ecolemultimedia.sabermostaf.projet2.activities.SubCategorieActivity;
 import com.ecolemultimedia.sabermostaf.projet2.models.Categories;
 import com.ecolemultimedia.sabermostaf.projet2.utils.ListOfCategorie;
 import com.ecolemultimedia.sabermostaf.projet2.utils.ListOfSubCategorie;
+import com.ecolemultimedia.sabermostaf.projet2.utils.Loader;
 
 import org.jsoup.Jsoup;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 
 public class ViewHome extends RelativeLayout {
@@ -25,12 +32,11 @@ public class ViewHome extends RelativeLayout {
     private LayoutInflater layoutInflater = null;
     private Categories cat = null;
     private TextView ui_tx_title_pager_title = null;
-    private TextView ui_tx_title_pager_description = null;
+    private RelativeLayout ui_tx_title_pager_description = null;
 
     private ImageView ui_img_pager_logo = null;
-    private ImageView ui_img_pager_arrow_left = null;
 
-    private ImageView ui_img_pager_arrow_right = null;
+
     private RelativeLayout ui_rl_view = null;
     private Context m_context = null;
     private int position = 0;
@@ -77,9 +83,7 @@ public class ViewHome extends RelativeLayout {
 
 
         ui_tx_title_pager_title = (TextView) convertView.findViewById(R.id.ui_tx_title_pager_title);
-        ui_tx_title_pager_description = (TextView) convertView.findViewById(R.id.ui_tx_title_pager_description);
-        ui_img_pager_arrow_left = (ImageView) convertView.findViewById(R.id.ui_img_pager_arrow_left);
-        ui_img_pager_arrow_right = (ImageView) convertView.findViewById(R.id.ui_img_pager_arrow_right);
+        ui_tx_title_pager_description = (RelativeLayout) convertView.findViewById(R.id.ui_tx_title_pager_description);
         ui_img_pager_logo = (ImageView) convertView.findViewById(R.id.ui_img_pager_logo);
 
         if (cat.getmTitle() != null) {
@@ -123,21 +127,26 @@ public class ViewHome extends RelativeLayout {
         }
 
         if (cat.getmDescription() != null) {
-            String doc = Jsoup.parse(cat.getmDescription()).text();
-            ui_tx_title_pager_description.setText(doc);
+
+            WebView webview=new WebView(m_context);
+            webview.setVerticalScrollBarEnabled(false);
+            WebSettings settings = webview.getSettings();
+            settings.setDefaultTextEncodingName("utf-8");
+            webview.setBackgroundColor(Color.TRANSPARENT);
+
+            String string =cat.getmDescription().substring(0,cat.getmDescription().length()/3);
+
+            String html="<html>\n" +
+                    " <head></head>\n" +
+                    " <body style=\"text-align:justify;color:white;background-color:#222224;\">\n"+string+"..."
+                    +" </body>\n" +
+                    "</html>";
+
+            webview.loadData(html, "text/html; charset=utf-8", "utf-8");
+            ui_tx_title_pager_description.addView(webview);
         }
 
 
-        if (position == 0) {
-            ui_img_pager_arrow_left.setVisibility(View.GONE);
-            ui_img_pager_arrow_right.setVisibility(View.VISIBLE);
-        } else if (position ==size-1) {
-            ui_img_pager_arrow_left.setVisibility(View.VISIBLE);
-            ui_img_pager_arrow_right.setVisibility(View.GONE);
-        } else {
-            ui_img_pager_arrow_left.setVisibility(View.VISIBLE);
-            ui_img_pager_arrow_right.setVisibility(View.VISIBLE);
-        }
 
         return convertView;
 

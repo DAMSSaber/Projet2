@@ -1,15 +1,12 @@
 package com.ecolemultimedia.sabermostaf.projet2.services;
 
-import android.util.Log;
-
+import com.android.volley.Cache;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.ecolemultimedia.sabermostaf.projet2.components.AppController;
-import com.ecolemultimedia.sabermostaf.projet2.interfaces.RequestCallbackCategories;
 import com.ecolemultimedia.sabermostaf.projet2.interfaces.RequestCallbackFormation;
-import com.ecolemultimedia.sabermostaf.projet2.models.Categories;
 import com.ecolemultimedia.sabermostaf.projet2.models.Formation;
 import com.ecolemultimedia.sabermostaf.projet2.utils.Const;
 
@@ -17,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
@@ -29,49 +27,98 @@ public class ServiceGetFormations {
     private static ServiceGetFormations mInstance = null;
     private JSONObject month = null;
 
-    private ArrayList<Formation>  listFormation=null;
-    private Formation formation=null;
+    private ArrayList<Formation> listFormation = null;
+    private Formation formation = null;
 
 
+    public static ServiceGetFormations getInstance() {
+        if (ourInstance == null) {
+            ourInstance = new ServiceGetFormations();
+        }
+
+        return ourInstance;
+    }
 
 
-      public static ServiceGetFormations getInstance() {
-          if (ourInstance == null) {
-              ourInstance = new ServiceGetFormations();
-          }
+    public ArrayList<Formation> getCacheFormation(String id) {
 
-          return ourInstance;
-      }
+        Cache cache = AppController.getInstance().getRequestQueue().getCache();
+        Cache.Entry entry = cache.get(Const.URL_JSON_FORM + id + "/trainings");
+        if (entry != null) {
+            try {
+                String data = new String(entry.data, "UTF-8");
 
+                try {
+
+                    JSONArray jsonArray = new JSONArray(data);
+
+                    listFormation = new ArrayList<Formation>();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+
+                        JSONObject row = (JSONObject) jsonArray.get(i);
+                        formation = new Formation();
+                        formation.initFormation(row);
+                        listFormation.add(formation);
+                    }
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        if (listFormation != null) {
+            return listFormation;
+        } else {
+            return null;
+        }
+    }
 
     public void getFormation(final RequestCallbackFormation delegate, String id) {
 
-        JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_FORM+id+"/trainings ",
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_FORM + id + "/trainings",
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        String resp = response.toString();
 
 
-                        Log.v("debeug","Reponse :"+response.toString());
+                        byte ptext[] = new byte[0];
+                        String value = null;
+                        JSONArray jsonArray;
+                        try {
 
-                        listFormation = new ArrayList<Formation>();
-                        for (int i = 0; i < response.length(); i++) {
 
-                            try {
-                                JSONObject row = (JSONObject) response.get(i);
+                            ptext = resp.getBytes("ISO-8859-1");
+                            value = new String(ptext, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            jsonArray = new JSONArray(value);
+
+                            listFormation = new ArrayList<Formation>();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+
+
+                                JSONObject row = (JSONObject) jsonArray.get(i);
                                 formation = new Formation();
-                               formation.initFormation(row);
+                                formation.initFormation(row);
                                 listFormation.add(formation);
 
-
-
-                            } catch (JSONException e) {
-
-                                e.printStackTrace();
                             }
+                            delegate.onGetFormationSuccess(listFormation);
+
+
+                        } catch (JSONException e) {
+
+                            e.printStackTrace();
                         }
 
-                        delegate.onGetFormationSuccess(listFormation);
                     }
                 }, new Response.ErrorListener() {
             @Override

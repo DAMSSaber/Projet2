@@ -2,46 +2,53 @@
 <items version="2" >
 
     <item
-        jar="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-8d2ff84059103155c768ff5132e1eee69b37de02.jar" />
-    </item>
-    <item
         jar="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/debug/classes-3b7c72e94c3c7956df0e1099a1c72d91ca3bd56d.jar" />
-    </item>
-    <item
-        jar="/Users/saber/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.1-cf62822bb438ce72991a1068b0513c4936dfc54a.jar" />
+        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/release/classes-3b7c72e94c3c7956df0e1099a1c72d91ca3bd56d.jar" />
     </item>
     <item
         jar="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/debug/classes-3919c70ae8a2fd4e48a10b13fd52c4e2fe4f026e.jar" />
+        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/release/classes-3919c70ae8a2fd4e48a10b13fd52c4e2fe4f026e.jar" />
     </item>
     <item
         jar="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/libs/volley.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
-        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/debug/volley-8577b6fca471e46018ec7cdb9e680f020327b7f9.jar" />
+        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/release/volley-8577b6fca471e46018ec7cdb9e680f020327b7f9.jar" />
+    </item>
+    <item
+        jar="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/libs/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/release/gson-2.3.1-c2218545148510d370b81a39b6272c81f9dae4d6.jar" />
+    </item>
+    <item
+        jar="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/release/internal_impl-22.2.1-8d2ff84059103155c768ff5132e1eee69b37de02.jar" />
+    </item>
+    <item
+        jar="/Users/saber/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/release/support-annotations-22.2.1-cf62822bb438ce72991a1068b0513c4936dfc54a.jar" />
     </item>
     <item
         jar="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/libs/jsoup-1.8.3.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="3a86e137575e4a45f5a9eec407f8135512e823a2">
-        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/debug/jsoup-1.8.3-c338c21e46116da7370b3aea6f2b528206f79c2c.jar" />
+        <dex dex="/Users/saber/Desktop/Saber DAMS/Perso/Projet2/app/build/intermediates/pre-dexed/release/jsoup-1.8.3-c338c21e46116da7370b3aea6f2b528206f79c2c.jar" />
     </item>
 
 </items>

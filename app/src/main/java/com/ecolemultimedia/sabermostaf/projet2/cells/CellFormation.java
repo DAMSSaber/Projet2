@@ -122,6 +122,8 @@ private  RelativeLayout ui_rl_sub_content_formation=null;
             @Override
             public void onClick(View v) {
 
+
+                Log.v("Debeug","Url video :"+info.getTeaser());
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
                 Uri data = Uri.parse(info.getTeaser());
                 intent.setDataAndType(data, "video/mp4");

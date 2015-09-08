@@ -1,21 +1,21 @@
 package com.ecolemultimedia.sabermostaf.projet2.services;
 
-import android.util.Log;
-
+import com.android.volley.Cache;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.ecolemultimedia.sabermostaf.projet2.components.AppController;
 import com.ecolemultimedia.sabermostaf.projet2.interfaces.RequestCallbackCategories;
 import com.ecolemultimedia.sabermostaf.projet2.models.Categories;
+import com.ecolemultimedia.sabermostaf.projet2.models.Formation;
 import com.ecolemultimedia.sabermostaf.projet2.utils.Const;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
@@ -28,19 +28,59 @@ public class ServiceGetCategories {
     private static ServiceGetCategories mInstance = null;
     private JSONObject month = null;
 
-    private ArrayList<Categories>  listCategorie=null;
-    private Categories categ=null;
+    private ArrayList<Categories> listCategorie = null;
+    private Categories categ = null;
 
 
+    public static ServiceGetCategories getInstance() {
+        if (ourInstance == null) {
+            ourInstance = new ServiceGetCategories();
+        }
+
+        return ourInstance;
+    }
+
+    public ArrayList<Categories> getCacheCategrie() {
+
+        Cache cache = AppController.getInstance().getRequestQueue().getCache();
+        Cache.Entry entry = cache.get(Const.URL_JSON_CAT);
+        if (entry != null) {
+            try {
+                String data = new String(entry.data, "UTF-8");
+
+                try {
+
+                    JSONArray jsonArray = new JSONArray(data);
+
+                    listCategorie = new ArrayList<Categories>();
+                    for (int i = 0; i < jsonArray.length(); i++) {
 
 
-      public static ServiceGetCategories getInstance() {
-          if (ourInstance == null) {
-              ourInstance = new ServiceGetCategories();
-          }
+                        JSONObject row = (JSONObject) jsonArray.get(i);
+                        categ = new Categories();
+                        categ.initCategorie(row);
+                        listCategorie.add(categ);
 
-          return ourInstance;
-      }
+                    }
+
+
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        if (listCategorie != null) {
+            return listCategorie;
+        } else {
+            return null;
+        }
+    }
 
 
     public void getCategories(final RequestCallbackCategories delegate) {
@@ -49,28 +89,41 @@ public class ServiceGetCategories {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        String resp = response.toString();
 
 
-                        Log.v("debeug","Reponse :"+response.toString());
+                        byte ptext[] = new byte[0];
+                        String value = null;
+                        JSONArray jsonArray;
+                        try {
+                            ptext = resp.getBytes("ISO-8859-1");
+                            value = new String(ptext, "utf-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                             jsonArray = new JSONArray(value);
 
-                        listCategorie = new ArrayList<Categories>();
-                        for (int i = 0; i < response.length(); i++) {
+                            listCategorie = new ArrayList<Categories>();
+                            for (int i = 0; i < jsonArray.length(); i++) {
 
-                            try {
-                                JSONObject row = (JSONObject) response.get(i);
+
+                                JSONObject row = (JSONObject) jsonArray.get(i);
                                 categ = new Categories();
                                 categ.initCategorie(row);
                                 listCategorie.add(categ);
 
 
 
-                            } catch (JSONException e) {
-
-                                e.printStackTrace();
                             }
+                            delegate.onGetCategoriesSuccess(listCategorie);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
 
-                        delegate.onGetCategoriesSuccess(listCategorie);
+
+
                     }
                 }, new Response.ErrorListener() {
             @Override

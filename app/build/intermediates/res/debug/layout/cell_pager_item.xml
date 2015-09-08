@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ui_rl_content_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:background="@color/grey_light"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/ui_tx_title_item_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INTER HTML 5"
+        android:textColor="@color/yellow"
+        android:textSize="20dp"/>
+
+    <RelativeLayout
+        android:id="@+id/ui_rl_sub_content_video_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ui_tx_title_item_pager"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.25"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ui_img_sub_content_videon"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_centerHorizontal="true"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner" />
+
+        <ImageView
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/play" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+<!-- From: file:/Users/saber/Desktop/Saber%20DAMS/Perso/Projet2/app/src/main/res/layout/cell_pager_item.xml -->

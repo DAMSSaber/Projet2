@@ -1,9 +1,13 @@
 package com.ecolemultimedia.sabermostaf.projet2.cells;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -54,8 +58,15 @@ public class CellSubCategorie extends RelativeLayout {
         if (info != null) {
 
             ui_tx_sub_title_sub_cat.setText(info.getmTitle());
-            String doc = Jsoup.parse(info.getmDescription()).text();
-            ui_tx_sub_content_sub_cat.setText(doc);
+
+
+
+            if(info.getmDescription()!=null) {
+                String string =info.getmDescription().substring(0, info.getmDescription().length() / 3);
+
+
+                ui_tx_sub_content_sub_cat.setText(Html.fromHtml(string));
+            }
 
         }
     }
